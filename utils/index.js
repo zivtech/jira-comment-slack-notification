@@ -1,5 +1,6 @@
 var functions = {
   getUserMentionsFromComment: function(commentBody) {
+    console.log(commentBody);
     return new Promise(function(resolve, reject) {
       let userMentions = commentBody.match(/(\[~[a-zA-Z]+\])/g)
       if (userMentions.length > 0) {
