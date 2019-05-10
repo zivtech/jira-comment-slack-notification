@@ -65,6 +65,7 @@ passport.use(new AtlassianOAuthStrategy({
       console.log(token)
       console.log(tokenSecret)
       console.log(req.session.slackUsername)
+      console.log("Altassian Profile", profile);
 
       // check if this user is just adding a jira token
       // or if they are a brand new user
@@ -92,7 +93,7 @@ passport.use(new AtlassianOAuthStrategy({
           })
         }
       })
-      
+
     })
   }
 ));
@@ -200,11 +201,11 @@ app.post('/response-from-slack', function(req, res) {
           console.log('there is no user')
           slack.sendSettingsToUser(thisUser)
         } else if (!thisUser.jiraToken || !thisUser.jiraTokenSecret) {
-          
+
           console.log('no tokens!!')
           // this shouldnt happen because we pop auth buttons instead
           // of popping respond to comment buttons if no tokens
-          
+
         } else {
           slack.openCommentDialog(payload).then(success => {
             console.log(success)
@@ -221,7 +222,7 @@ app.post('/response-from-slack', function(req, res) {
         console.log(payload.callback_id)
         let issueKey = payload.callback_id.split('|')[1]
         let comment = payload.submission.comment
-        
+
         jira.createComment(thisUser, issueKey, comment).then(success => {
           console.log('SUCCESS')
           console.log(success)
