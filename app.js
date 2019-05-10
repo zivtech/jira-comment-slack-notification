@@ -307,7 +307,7 @@ app.post('/comment-created', function(req, res) {
       // for each mentioned user thats signed up for this app, send slack msg
       userMentions.forEach(userMention => {
         // find if there is a user with that jira username in this app's DB
-        user.getByJiraAccountId(userMention).then((thisUser, index) => {
+        user.getByJiraAccountId(utils.addJiraMarkupToUsername(userMention)).then((thisUser, index) => {
           // check if this webhook contains a jira issue in payload
           // https://github.com/msolomonTMG/jira-comment-slack-notification/issues/17
           // TODO: we can clean this up with async/await
@@ -336,7 +336,10 @@ app.post('/comment-created', function(req, res) {
           }
 
         })
-        .catch(noUser => { return res.sendStatus(200) })
+        .catch(noUser => {
+          console.log("User could not be located with the given Account Id")
+           return res.sendStatus(200)
+         })
 
       })
 

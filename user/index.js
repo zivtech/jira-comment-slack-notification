@@ -72,6 +72,7 @@ var functions = {
     });
   },
   getByJiraAccountId: function(jiraAccountId) {
+    console.log("Looking Up User By Jira Account ID", jiraAccountId);
     return new Promise(function(resolve, reject) {
       User.findOne({
         jiraAccountId: jiraAccountId
