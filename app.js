@@ -133,7 +133,7 @@ app.get('/auth/atlassian-oauth/callback',
     function (req, res) {
       console.log('req')
       console.log(req)
-      console.log("ATLASSIAN AUTH CALLBACK")
+      console.log("ATLASSIAN AUTH CALLBACK", req)
       if (req.session.passport.user.jiraToken && req.session.passport.user.jiraTokenSecret) {
         slack.sendMessageToUser(req.session.passport.user.slackUsername, `:+1: Nice work, you're all set. Going forward, you'll have the option to respond to Jira comments from here!`)
       }
