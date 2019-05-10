@@ -66,6 +66,8 @@ passport.use(new AtlassianOAuthStrategy({
       console.log(tokenSecret)
       console.log(req.session.slackUsername)
       console.log("Altassian Profile", profile);
+      console.log("Altassian DisplayName", profile.displayName);
+      console.log("Altassian AccountId", profile._json.accountId);
 
       // check if this user is just adding a jira token
       // or if they are a brand new user
@@ -85,7 +87,9 @@ passport.use(new AtlassianOAuthStrategy({
             user.update(thisUser._id, {
               jiraToken: token,
               jiraTokenSecret: tokenSecret,
-              jiraUsername: utils.addJiraMarkupToUsername(profile.username)
+              jiraUsername: utils.addJiraMarkupToUsername(profile.username),
+              jiraDisplayName: profile.displayName,
+              jiraAccountId: profile._json.accountId
             }).then(updatedUser => {
               console.log(updatedUser)
               return done(null, updatedUser)
