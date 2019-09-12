@@ -15,6 +15,9 @@ var functions = {
   },
   stripJiraMarkupFromUsername: function(username) {
     return username.split('[~')[1].split(']')[0]
+  },
+  stripJiraMarkupAccountFromUsername: function(username) {
+    return username.split('[~accountid:')[1].split(']')[0]
   }
 }
 
