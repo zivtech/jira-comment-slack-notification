@@ -134,7 +134,7 @@ var functions = {
   openCommentDialog: function(payload) {
     return new Promise(function(resolve, reject) {
       let issueKey = payload.actions[0].value.split('|')[0]
-      let commentCreator = payload.actions[0].value.split('|')[1]
+      let commentCreator = payload.actions[0].value.split('|')[2]
       
       let dialog = {
         callback_id: `create_comment|${issueKey}`,
@@ -246,7 +246,7 @@ var functions = {
             style: "primary",
             text: "Respond from Slack",
             type: "button",
-            value: `${issue.key}|${comment.author.key}`
+            value: `${issue.key}|${comment.author.key}|${comment.author.displayName}`
           }]
         })
       }
