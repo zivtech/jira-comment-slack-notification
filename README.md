@@ -27,7 +27,7 @@ To setup this application you'll need:
   - Take note of the base64 encoded string that was generated in the bottom section
 3. **Setup the app on Heroku**
   - Create an account on Heroku: https://signup.heroku.com/ (a free solution for hosting applications)
-  - Click this deploy button to deploy this app to Heroku 👉 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/1valet/jira-comment-slack-notification/tree/master)
+  - Click this deploy button to deploy this app to Heroku 👉 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zivtech/jira-comment-slack-notification/tree/master)
   - When asked to enter values for environment variables, do the following...
 
     - APP_URL = the URL of this heroku application ("https://WHATEVER-YOU-NAMED-THIS.herokuapp.com/") the trailing slash is important  
