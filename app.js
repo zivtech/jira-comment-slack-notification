@@ -304,10 +304,12 @@ app.post('/comment-created', function(req, res) {
   if (webhookReason === "comment_created" && webhookData.comment.author.displayName != "GitHub Integration") {
     // look for a user mention in the comment
     utils.getUserMentionsFromComment(commentBody).then(userMentions => {
+      //MANUAL LOCK BECAUSE INDEX IS UNDEFINED:
+      let index = 0
       // for each mentioned user thats signed up for this app, send slack msg
       userMentions.forEach(userMention => {
         // find if there is a user with that jira username in this app's DB
-        user.getByJiraAccountId(utils.stripJiraMarkupAccountFromUsername(userMention)).then((thisUser, index) => {
+        user.getByJiraAccountId(utils.stripJiraMarkupAccountFromUsername(userMention)).then((thisUser) => {
           // check if this webhook contains a jira issue in payload
           // https://github.com/msolomonTMG/jira-comment-slack-notification/issues/17
           // TODO: we can clean this up with async/await
@@ -320,9 +322,12 @@ app.post('/comment-created', function(req, res) {
                 // if this is the last user to msg, send 200 status
                 if (userMentions.length === index + 1) {
                   res.sendStatus(200)
+                } else {
+                  index = index + 1
                 }
               })
-              .catch(err => { return res.sendStatus(500) })
+              .catch(err => {
+                return res.sendStatus(500) })
             })
           } else {
             // send a slack message to the user
@@ -330,9 +335,12 @@ app.post('/comment-created', function(req, res) {
               // if this is the last user to msg, send 200 status
               if (userMentions.length === index + 1) {
                 res.sendStatus(200)
+              } else {
+                index = index + 1
               }
             })
-            .catch(err => { return res.sendStatus(500) })
+            .catch(err => { 
+              return res.sendStatus(500) })
           }
 
         })
