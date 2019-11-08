@@ -224,7 +224,7 @@ var functions = {
       }]
       
       // send the user an Auth with Jira button if they did not do so already
-      /*if (!thisUser.jiraToken || !thisUser.jiraTokenSecret) {
+      if (!thisUser.jiraToken || !thisUser.jiraTokenSecret) {
         attachments.push({
           text: `:wave: Great news! You can now respond to Jira comments within Slack! To do so, you must first Auth with Jira`,
           fallback: "Auth with Jira",
@@ -249,7 +249,7 @@ var functions = {
             value: `${issue.key}|${comment.author.key}`
           }]
         })
-      }*/
+      }
       params.attachments = JSON.stringify(attachments)
 
       bot.postMessageToUser(thisUser.slackUsername, text, params, function(data) {
