@@ -247,7 +247,7 @@ var functions = {
             style: "primary",
             text: "Respond from Slack",
             type: "button",
-            value: `${issue.key}|${comment.author.key}|${comment.author.displayName}`
+            value: `${issue.key}|${comment.author.accountId}|${comment.author.displayName}`
           }]
         })
       }
