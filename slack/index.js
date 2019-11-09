@@ -134,7 +134,8 @@ var functions = {
   openCommentDialog: function(payload) {
     return new Promise(function(resolve, reject) {
       let issueKey = payload.actions[0].value.split('|')[0]
-      let commentCreator = payload.actions[0].value.split('|')[2]
+      let commentCreatorName = payload.actions[0].value.split('|')[2]
+      let commentCreatorId = payload.actions[0].value.split('|')[1]
       
       let dialog = {
         callback_id: `create_comment|${issueKey}`,
@@ -145,7 +146,7 @@ var functions = {
             label: "Comment",
             name: "comment",
             type: "textarea",
-            value: `[~${commentCreator}] `,
+            value: `[${commentCreatorName}~${commentCreatorId}] `,
             optional: false
           }
         ]
