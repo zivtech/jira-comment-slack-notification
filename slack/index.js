@@ -146,7 +146,7 @@ var functions = {
             label: "Comment",
             name: "comment",
             type: "textarea",
-            value: `[${commentCreatorName}~accountid:${commentCreatorId}] `,
+            value: `[${commentCreatorName}|~accountid:${commentCreatorId}] `,
             optional: false
           }
         ]
