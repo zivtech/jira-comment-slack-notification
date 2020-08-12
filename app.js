@@ -17,15 +17,13 @@ const
 
 let privateKey = Buffer.from(process.env.RSA_PRIVATE_KEY, 'base64').toString();
 
-mongoose.connect(MONGO_URI, function (err, res) {
-  useMongoClient: true
-  useNewUrlParser: true
+// Connect to the database before starting the application server. 
+mongodb.MongoClient.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/myLocalDb', function (err, database) {
   if (err) {
-  console.log ('ERROR connecting to: ' + MONGO_URI + '. ' + err);
-  } else {
-  console.log ('Succeeded connected to: ' + MONGO_URI);
+    console.log(err);
+    process.exit(1);
   }
-});
+}
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
