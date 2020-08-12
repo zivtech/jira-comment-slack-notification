@@ -20,7 +20,7 @@ let privateKey = Buffer.from(process.env.RSA_PRIVATE_KEY, 'base64').toString();
 const mongodb = require('mongodb')
 
 // Connect to the database before starting the application server. 
-mongodb.MongoClient.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/myLocalDb', function (err, database) {
+mongodb.MongoClient.connect(MONGO_URI || 'mongodb://localhost:27017/myLocalDb', function (err, database) {
   if (err) {
     console.log(err);
     process.exit(1);
