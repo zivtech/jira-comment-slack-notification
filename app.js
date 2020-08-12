@@ -18,6 +18,7 @@ const
 let privateKey = Buffer.from(process.env.RSA_PRIVATE_KEY, 'base64').toString();
 
 mongoose.connect(MONGO_URI, function (err, res) {
+  useMongoClient: true,
   if (err) {
   console.log ('ERROR connecting to: ' + MONGO_URI + '. ' + err);
   } else {
