@@ -25,6 +25,9 @@ mongodb.MongoClient.connect(MONGO_URI || 'mongodb://localhost:27017/myLocalDb', 
     console.log(err);
     process.exit(1);
   }
+  else {
+    console.log("Connected!");
+  }
 });
 
 var app = express();
