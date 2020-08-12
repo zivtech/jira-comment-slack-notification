@@ -19,8 +19,8 @@ let privateKey = Buffer.from(process.env.RSA_PRIVATE_KEY, 'base64').toString();
 
 
 const MongoClient = require("mongodb").MongoClient;
- const client = await new MongoClient(MONGO_URI,{ useNewUrlParser: true});
- client.connect();
+const client = new MongoClient(MONGO_URI,{ useNewUrlParser: true});
+client.connect();
 mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
 mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err); }); 
 
