@@ -13,7 +13,7 @@ const
   mongoose = require('mongoose'),
   APP_URL = process.env.APP_URL || `http://localhost:5000/`,
   JIRA_URL = process.env.JIRA_URL,
-  MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/mongo_test";
+  MONGO_URI = process.env.DB_URI || "mongodb://localhost:27017/mongo_test";
 
 let privateKey = Buffer.from(process.env.RSA_PRIVATE_KEY, 'base64').toString();
 
