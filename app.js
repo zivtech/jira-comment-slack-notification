@@ -24,14 +24,6 @@ const MongoClient = require("mongodb").MongoClient;
 mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
 mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err); }); 
 
-mongoose.connect(MONGO_URI, function (err, res) {
-  if (err) {
-  console.log ('ERROR connecting to: ' + MONGO_URI + '. ' + err);
-  } else {
-  console.log ('Succeeded connected to: ' + MONGO_URI);
-  }
-});
-
 var app = express();
 app.set('port', process.env.PORT || 5000);
 
