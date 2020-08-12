@@ -23,7 +23,7 @@ mongodb.MongoClient.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/
     console.log(err);
     process.exit(1);
   }
-}
+});
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
